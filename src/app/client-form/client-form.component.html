@@ -1,39 +1,39 @@
-<form *ngIf="!display" autocomplete="on" (ngSubmit)="onSubmit()"
+<form *ngIf="!display" autocomplete="on" (ngSubmit)="onSubmit()" [formGroup]="formgroup"
     style="margin: 5em; width:55em; display: flex; flex-wrap: wrap;">
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Nom</mat-label>
-            <input onlyLetter matInput [(ngModel)]="name" name="name">
+            <input onlyLetter matInput formControlName="name" name="name">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Prénom</mat-label>
-            <input onlyLetter matInput [(ngModel)]="firstName" name="firstName">
+            <input onlyLetter matInput formControlName="firstName" name="firstName">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Adresse</mat-label>
-            <input matInput [(ngModel)]="address" name="address">
+            <input matInput formControlName="address" name="address">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Code postal</mat-label>
-            <input specificNumberDigit size="5" matInput [(ngModel)]="zipCode" name="zipCode">
+            <input specificNumberDigit size="5" matInput formControlName="zipCode" name="zipCode">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Ville</mat-label>
-            <input onlyLetter matInput [(ngModel)]="city" name="city">
+            <input onlyLetter matInput formControlName="city" name="city">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Pays</mat-label>
-            <select [(ngModel)]="country" matNativeControl (change)="changeCountry($event)" name="country">
+            <select formControlName="country" matNativeControl (change)="changeCountry($event)" name="country">
                 <option value="France">France</option>
             </select>
         </mat-form-field>
@@ -41,19 +41,19 @@
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>tel</mat-label>
-            <input specificNumberDigit size="10" matInput [(ngModel)]="phone" name="phone">
+            <input specificNumberDigit size="10" matInput formControlName="phone" name="phone">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>email</mat-label>
-            <input matInput [(ngModel)]="email" name="email">
+            <input matInput formControlName="email" name="email">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Civilité</mat-label>
-            <select [(ngModel)]="gender" matNativeControl (change)="change($event)" name="gender">
+            <select formControlName="gender" matNativeControl (change)="change($event)" name="gender">
                 <option value="Monsieur">Monsieur</option>
                 <option value="Madame">Madame</option>
                 <option value="Autres">Autres</option>
@@ -63,19 +63,19 @@
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>identifiant</mat-label>
-            <input matInput [(ngModel)]="login" name="login">
+            <input matInput formControlName="login" name="login">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>mot de passe</mat-label>
-            <input matInput [(ngModel)]="password" name="password" type="password">
+            <input matInput formControlName="password" name="password" type="password">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>validation mot de passe</mat-label>
-            <input [(ngModel)]="passwordValidation" matInput name="passwordValidation" type="password">
+            <input formControlName="passwordValidation" matInput name="passwordValidation" type="password">
         </mat-form-field>
     </p>
     <p style='margin-bottom: 5em;'>

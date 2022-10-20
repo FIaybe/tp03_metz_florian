@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Client } from 'src/core/Client';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Client } from 'src/app/core/Client';
 
 @Component({
   selector: 'app-client-form',
@@ -7,30 +8,49 @@ import { Client } from 'src/core/Client';
   styleUrls: ['./client-form.component.scss']
 })
 export class ClientFormComponent {
+
+  formgroup: FormGroup;
+
   display: boolean = false;
-  client: Client;
-  name: string = '';
-  firstName: string = '';
-  address: string = '';
-  zipCode: string = '';
-  city: string = '';
-  country: string = '';
-  phone: string = '';
-  email: string = '';
-  gender: string = '';
-  login: string = '';
-  password: string = '';
-  passwordValidation: string = '';
+  client: Client = new Client();
+
+  constructor(private formBuilder: FormBuilder) {
+
+    this.formgroup = this.formBuilder.group({
+      name: ['', Validators.required],
+      firstName: ['', Validators.required],
+      address: ['', Validators.required],
+      zipCode: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+      email: ['', [Validators.required, Validators.email]],
+      gender: ['', Validators.required],
+      login: ['', Validators.required],
+      password: ['', Validators.required],
+      passwordValidation: ['', [Validators.required, Validators.pattern(this.client.password)]]
+    });
+
+    this.formgroup.valueChanges.subscribe({
+      next: (value) => {
+        this.client.name = value.name;
+        this.client.firstName = value.firstName;
+        this.client.address = value.address;
+        this.client.zipCode = value.zipCode;
+        this.client.city = value.city;
+        this.client.country = value.country;
+        this.client.phone = value.phone;
+        this.client.email = value.email;
+        this.client.gender = value.gender
+        this.client.login = value.login;
+        this.client.password = value.password;
+        this.client.passwordValidation = value.passwordValidation;
+      }
+    })
+  }
 
   onSubmit() {
-    this.client = new Client(
-      this.name, this.firstName, this.address,
-      this.zipCode, this.city, this.country,
-      this.phone, this.email, this.gender,
-      this.login, this.password, this.passwordValidation);
-
     this.changedisplay();
-
   }
 
   changedisplay() {
@@ -38,11 +58,11 @@ export class ClientFormComponent {
   }
 
   change(event) {
-    this.gender = event.target.value;
+    this.client.gender = event.target.value;
   }
 
   changeCountry(event) {
-    this.country = event.target.value;
+    this.client.country = event.target.value;
   }
 
 }

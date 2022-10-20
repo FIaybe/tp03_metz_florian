@@ -12,10 +12,10 @@ export class Client {
     password: string = '';
     passwordValidation: string = '';
     constructor(
-        name: string, firstName: string, address: string,
-        zipCode: string, city: string, country: string,
-        phone: string, email: string, gender: string, login: string,
-        password: string, passwordValidation: string) {
+        name: string = '', firstName: string = '', address: string = '',
+        zipCode: string = '', city: string = '', country: string = '',
+        phone: string = '', email: string = '', gender: string = '', login: string = '',
+        password: string = '', passwordValidation: string = '') {
 
         this.name = name;
         this.firstName = firstName;

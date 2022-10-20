@@ -15,10 +15,16 @@ export class HeaderComponent implements OnInit {
         label: 'Welcome',
         link: '',
         index: 0
-      }, {
+      },
+      {
         label: 'Création client',
         link: 'client-form',
         index: 1
+      },
+      {
+        label: 'Catalogue',
+        link: 'display-catalog',
+        index: 2
       }
     ];
 

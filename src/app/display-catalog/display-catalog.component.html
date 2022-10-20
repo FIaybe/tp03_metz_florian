@@ -1,0 +1,21 @@
+<div>
+    <h1>Catalogue</h1>
+    <app-search-bar [property]="'name'" [list]="products" (filterResult)="updateList($event)"
+        (filterReset)="getCatalogueObject()">
+    </app-search-bar>
+
+    <div *ngIf="products" class="flex">
+        <div *ngFor="let product of products">
+            <mat-card class="custom-card">
+                <mat-card-title>{{product.name}}</mat-card-title>
+                <mat-card-content>
+                    <p>{{ product.description }}</p>
+                </mat-card-content>
+                <mat-divider></mat-divider>
+                <mat-card-footer style="padding-left:1rem">
+                    {{product.price | currency:'EUR'}}
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+</div>
