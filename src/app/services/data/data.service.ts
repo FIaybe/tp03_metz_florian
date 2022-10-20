@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Client } from 'src/app/core/Client';
+import { environment } from 'src/environments/environment';
 import { Product } from '../../core/product';
 
 @Injectable({
@@ -8,7 +10,7 @@ import { Product } from '../../core/product';
 })
 export class DataService {
 
-  constructor() { }
+  constructor(private client: HttpClient) { }
 
   //create methods getClient()
   getClient(): Client {
@@ -33,19 +35,6 @@ export class DataService {
 
   //GetCatalogue : return a list of products
   getCatalogue(): Observable<Product[]> {
-    return new Observable<Product[]>((observer) => {
-      observer.next([
-        new Product('Hochet', 'pour les enfants', 10),
-        new Product('gameboy', 'pour les geek', 20),
-        new Product('cuillère', 'pour les café', 30),
-        new Product('épée', 'pour les chevaliers', 40),
-        new Product('sabre laser', 'pour les jedi', 50),
-        new Product('manteau', 'pour l\'hiver', 60),
-        new Product('porte', 'pour la maison', 70),
-        new Product('avion', 'pour les riches', 80),
-        new Product('table', 'pour manger', 90),
-        new Product('sac à dos', 'pour les randos', 100),
-      ]);
-    });
+    return this.client.get<Product[]>(environment.catalogue);
   }
 }
