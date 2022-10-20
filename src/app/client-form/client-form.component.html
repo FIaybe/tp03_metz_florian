@@ -3,13 +3,13 @@
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Nom</mat-label>
-            <input matInput [(ngModel)]="name" name="name">
+            <input onlyLetter matInput [(ngModel)]="name" name="name">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Prénom</mat-label>
-            <input matInput [(ngModel)]="firstName" name="firstName">
+            <input onlyLetter matInput [(ngModel)]="firstName" name="firstName">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
@@ -21,25 +21,27 @@
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Code postal</mat-label>
-            <input matInput [(ngModel)]="zipCode" name="zipCode">
+            <input specificNumberDigit size="5" matInput [(ngModel)]="zipCode" name="zipCode">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Ville</mat-label>
-            <input matInput [(ngModel)]="city" name="city">
+            <input onlyLetter matInput [(ngModel)]="city" name="city">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Pays</mat-label>
-            <input matInput [(ngModel)]="country" name="country">
+            <select [(ngModel)]="country" matNativeControl (change)="changeCountry($event)" name="country">
+                <option value="France">France</option>
+            </select>
         </mat-form-field>
     </p>
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>tel</mat-label>
-            <input matInput [(ngModel)]="phone" name="phone">
+            <input specificNumberDigit size="10" matInput [(ngModel)]="phone" name="phone">
         </mat-form-field>
     </p>
     <p style="margin:2em;">
@@ -51,7 +53,11 @@
     <p style="margin:2em;">
         <mat-form-field appearance="legacy">
             <mat-label>Civilité</mat-label>
-            <input matInput [(ngModel)]="gender" name="gender">
+            <select [(ngModel)]="gender" matNativeControl (change)="change($event)" name="gender">
+                <option value="Monsieur">Monsieur</option>
+                <option value="Madame">Madame</option>
+                <option value="Autres">Autres</option>
+            </select>
         </mat-form-field>
     </p>
     <p style="margin:2em;">

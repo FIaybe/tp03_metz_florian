@@ -37,4 +37,12 @@ export class ClientFormComponent {
     this.display = !this.display;
   }
 
+  change(event) {
+    this.gender = event.target.value;
+  }
+
+  changeCountry(event) {
+    this.country = event.target.value;
+  }
+
 }

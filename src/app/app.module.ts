@@ -12,6 +12,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OnlyLetterDirective } from 'src/directives/onlyLetter/only-letter.directive';
+import { SpecificNumberDigitDirective } from 'src/directives/specificNumberDigit/specific-number-digit.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClientFormComponent } from './client-form/client-form.component';
@@ -19,6 +21,7 @@ import { DisplayClientComponent } from './display-client/display-client.componen
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { PhoneFormatPipe } from './pipe/phone-format.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +30,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
     ClientFormComponent,
     WelcomeComponent,
     DisplayClientComponent,
+    SpecificNumberDigitDirective,
+    OnlyLetterDirective,
+    PhoneFormatPipe,
   ],
   imports: [
     BrowserModule,
